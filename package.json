@@ -1,44 +1,48 @@
 {
   "private": true,
   "scripts": {
-    "predev": "npm run typegen",
-    "dev": "next",
-    "prebuild": "npm run typegen",
     "build": "next build",
+    "dev": "next",
+    "format": "npx prettier --write . --ignore-path .gitignore",
+    "lint": "next lint -- --ignore-path .gitignore",
+    "lint:fix": "npm run format && npm run lint -- --fix",
     "start": "next start",
-    "lint": "next lint",
-    "presetup": "echo 'about to setup env variables, follow the guide here: https://github.com/vercel/next.js/tree/canary/examples/cms-sanity#using-the-sanity-cli'",
-    "setup": "npx sanity@latest init --env .env.local",
-    "postsetup": "echo 'create the read token by following the rest of the guide: https://github.com/vercel/next.js/tree/canary/examples/cms-sanity#creating-a-read-token'",
-    "typegen": "sanity schema extract && sanity typegen generate"
+    "type-check": "tsc --noEmit"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
   },
   "dependencies": {
-    "@sanity/assist": "^3.0.6",
-    "@sanity/icons": "^3.3.1",
+    "@portabletext/react": "3.0.11",
+    "@sanity/client": "6.12.3",
+    "@sanity/demo": "1.0.2",
     "@sanity/image-url": "^1.0.2",
-    "@sanity/preview-url-secret": "^1.6.20",
-    "@sanity/vision": "^3.55.0",
-    "@tailwindcss/typography": "^0.5.14",
-    "@types/node": "^20.14.13",
-    "@types/react": "^18.3.4",
-    "@types/react-dom": "^18.3.0",
-    "@vercel/speed-insights": "^1.0.12",
-    "autoprefixer": "^10.4.20",
-    "date-fns": "^3.6.0",
-    "next": "^14.2.5",
-    "next-sanity": "^9.4.7",
-    "postcss": "^8.4.41",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "sanity": "^3.55.0",
-    "sanity-plugin-asset-source-unsplash": "^3.0.1",
-    "server-only": "^0.0.1",
-    "styled-components": "^6.1.12",
-    "tailwindcss": "^3.4.10",
-    "typescript": "5.5.4"
+    "@sanity/vision": "^3.61.0",
+    "@tailwindcss/typography": "0.5.10",
+    "next": "14.1.0",
+    "next-auth": "5.0.0-beta.22",
+    "next-sanity": "^7.1.4",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "sanity": "^3.61.0",
+    "sanity-plugin-iframe-pane": "2.6.1",
+    "styled-components": "^6.1.13"
   },
   "devDependencies": {
-    "eslint": "^8.57.0",
-    "eslint-config-next": "^14.2.5"
+    "@types/react": "18.2.55",
+    "autoprefixer": "10.4.17",
+    "eslint": "8.56.0",
+    "eslint-config-next": "14.1.0",
+    "eslint-plugin-simple-import-sort": "10.0.0",
+    "postcss": "8.4.35",
+    "prettier": "3.2.5",
+    "prettier-plugin-packagejson": "2.4.10",
+    "prettier-plugin-tailwindcss": "0.5.11",
+    "tailwindcss": "3.4.1",
+    "typescript": "5.3.3"
+  },
+  "engines": {
+    "node": ">=16"
   }
 }
